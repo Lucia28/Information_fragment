@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="Azure">#007FFF</color>
+    <color name="Amber">#FFBF00</color>
+    <color name="Horizon_blue">#B8DDC8</color>
+    <color name="DarkOrange">#FF8C00</color>
+    <color name="white">#FFFFFF</color>
+</resources>
