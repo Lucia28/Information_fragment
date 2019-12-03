@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
@@ -19,10 +20,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "MainActivity";
-    private ImageHandler handler = new ImageHandler(new WeakReference<MainActivity>(this));
-    private ImageHandler handler_menu = new ImageHandler(new WeakReference<MainActivity>(this));
-    private ViewPager viewPager;
-    private ViewPager viewPager_menu;
+    public ImageHandler handler = new ImageHandler(new WeakReference<MainActivity>(this));
+    public ImageHandler handler_menu = new ImageHandler(new WeakReference<MainActivity>(this));
+    public ViewPager viewPager;
+    public ViewPager viewPager_menu;
     private TextView mTextMessage;
 
     Boolean look;
@@ -87,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         //資料集
         ArrayList<ImageView> views = new ArrayList<ImageView>();
         ArrayList<ImageView> view_menu = new ArrayList<ImageView>();
+
+
 
         for (int i = 0; i < 3; i++) {
             ImageView view1 = new ImageView(this);
@@ -192,8 +195,13 @@ public class MainActivity extends AppCompatActivity {
         public static final long MSG_DELAY = 3000;
         // 使用弱引用避免Handler洩露.這裡的泛型引數可以不是Activity，也可以是Fragment等
         private WeakReference<MainActivity> weakReference;
+        private WeakReference wr;
         private int currentItem = 0;
         private int currentItem_menu = 0;
+
+        ImageHandler(Fragment f) {
+            this.wr = new WeakReference(f);
+        }
 
         public ImageHandler(WeakReference<MainActivity> wk) {
             weakReference = wk;
